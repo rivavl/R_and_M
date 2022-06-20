@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
+    android:padding="@dimen/main_padding">
+
+    <TextView
+        android:id="@+id/location_detail_fragment_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Earth" />
+
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/location_detail_type"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@id/dimension"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/location_detail_fragment_name" />
+
+    <TextView
+        android:id="@+id/location_detail_fragment_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/type"
+        app:layout_constraintStart_toEndOf="@id/type"
+        app:layout_constraintTop_toTopOf="@id/type"
+        tools:text="Planet" />
+
+    <TextView
+        android:id="@+id/dimension"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/location_detail_dimension"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@id/residents"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/type" />
+
+    <TextView
+        android:id="@+id/location_detail_fragment_dimension"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/dimension"
+        app:layout_constraintStart_toEndOf="@id/dimension"
+        app:layout_constraintTop_toTopOf="@id/dimension"
+        tools:text="Dimension C-137" />
+
+    <TextView
+        android:id="@+id/residents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/location_detail_residents"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@id/location_detail_fragment_residents_rv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dimension" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/location_detail_fragment_residents_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/residents"
+        tools:listitem="@layout/location_char_card_item" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
