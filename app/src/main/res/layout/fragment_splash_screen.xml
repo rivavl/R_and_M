@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".SplashScreenFragment">
+    tools:context=".presentation.fragments.SplashScreenFragment">
 
     <ImageView
         android:scaleType="center"
