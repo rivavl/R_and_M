@@ -1,4 +1,4 @@
-package com.marina.rickandmorty.presentation.fragments
+package com.marina.rickandmorty.presentation.location
 
 import androidx.fragment.app.Fragment
 import com.marina.rickandmorty.R

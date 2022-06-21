@@ -3,7 +3,7 @@ package com.marina.rickandmorty.presentation
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.marina.rickandmorty.R
-import com.marina.rickandmorty.presentation.fragments.CharactersListFragment
+import com.marina.rickandmorty.presentation.character.CharactersListFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
