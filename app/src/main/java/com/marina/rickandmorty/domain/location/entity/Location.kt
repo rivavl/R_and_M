@@ -1,6 +1,6 @@
-package com.marina.rickandmorty.domain.entity.location
+package com.marina.rickandmorty.domain.location.entity
 
-import com.marina.rickandmorty.domain.entity.character.Character
+import com.marina.rickandmorty.domain.character.entity.Character
 
 data class Location(
     val created: String,

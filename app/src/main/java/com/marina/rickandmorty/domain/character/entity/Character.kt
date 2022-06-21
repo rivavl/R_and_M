@@ -1,4 +1,4 @@
-package com.marina.rickandmorty.domain.entity.character
+package com.marina.rickandmorty.domain.character.entity
 
 data class Character(
     val created: String,

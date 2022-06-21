@@ -1,6 +1,6 @@
-package com.marina.rickandmorty.domain.entity.episode
+package com.marina.rickandmorty.domain.episode.entity
 
-import com.marina.rickandmorty.domain.entity.character.Character
+import com.marina.rickandmorty.domain.character.entity.Character
 
 data class Episode(
     val air_date: String,
