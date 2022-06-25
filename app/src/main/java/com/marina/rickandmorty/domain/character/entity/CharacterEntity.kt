@@ -1,8 +1,10 @@
 package com.marina.rickandmorty.domain.character.entity
 
-data class Character(
+import com.marina.rickandmorty.domain.episode.entity.EpisodeEntity
+
+data class CharacterEntity(
     val created: String,
-    val episode: List<Any>,
+    val episode: List<EpisodeEntity>,
     val gender: String,
     val id: Int,
     val image: String,
