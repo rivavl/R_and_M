@@ -1,11 +1,11 @@
 package com.marina.rickandmorty.domain.character.repository
 
-import androidx.lifecycle.LiveData
-import com.marina.rickandmorty.domain.character.entity.CharacterEntity
+import com.marina.rickandmorty.data.character.entity.CharacterDto
+import com.marina.rickandmorty.data.character.entity.CharacterResponse
 
 interface CharacterRepository {
 
-    suspend fun getAllCharacters(): LiveData<List<CharacterEntity>>
+    suspend fun getAllCharacters(pageNumber: Int): List<CharacterDto>
 
-    suspend fun getCharacter(id: Int): CharacterEntity
+    suspend fun getCharacter(id: Int): CharacterDto
 }

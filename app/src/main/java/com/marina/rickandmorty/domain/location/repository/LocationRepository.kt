@@ -1,11 +1,10 @@
 package com.marina.rickandmorty.domain.location.repository
 
-import androidx.lifecycle.LiveData
-import com.marina.rickandmorty.domain.location.entity.LocationEntity
+import com.marina.rickandmorty.data.location.entity.LocationDto
 
 interface LocationRepository {
 
-    suspend fun getAllLocations(): LiveData<List<LocationEntity>>
+    suspend fun getAllLocations(page: Int): List<LocationDto>
 
-    suspend fun getLocation(id: Int): LocationEntity
+    suspend fun getLocation(id: Int): LocationDto
 }
