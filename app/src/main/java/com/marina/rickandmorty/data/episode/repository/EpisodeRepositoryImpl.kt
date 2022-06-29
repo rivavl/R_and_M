@@ -1,15 +1,16 @@
 package com.marina.rickandmorty.data.episode.repository
 
-import androidx.lifecycle.LiveData
-import com.marina.rickandmorty.domain.episode.entity.EpisodeEntity
+import com.marina.rickandmorty.data.episode.entity.EpisodeDto
+import com.marina.rickandmorty.data.util.RetrofitInstance
 import com.marina.rickandmorty.domain.episode.repository.EpisodeRepository
 
-class EpisodeRepositoryImpl : EpisodeRepository {
-    override suspend fun getAllEpisodes(): LiveData<List<EpisodeEntity>> {
-        TODO("Not yet implemented")
+class EpisodeRepositoryImpl() : EpisodeRepository {
+
+    override suspend fun getAllEpisodes(page: Int): List<EpisodeDto> {
+        return RetrofitInstance.episodeApi.getEpisodes(page).episodeDtos
     }
 
-    override suspend fun getEpisode(id: Int): EpisodeEntity {
-        TODO("Not yet implemented")
+    override suspend fun getEpisode(id: Int): EpisodeDto {
+        return RetrofitInstance.episodeApi.getEpisodeById(id)
     }
 }
