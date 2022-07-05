@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:backgroundTint="@color/light_gray"
     android:layout_margin="12dp"
     app:cardCornerRadius="@dimen/card_corner_radius">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/light_gray"
         android:orientation="vertical"
         android:padding="20dp">
 
         <ImageView
             android:id="@+id/character_card_photo"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:contentDescription="@string/character_photo_image_description"
@@ -26,6 +26,9 @@
         <TextView
             android:id="@+id/character_card_name"
             android:layout_width="match_parent"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             android:layout_height="wrap_content"
             android:gravity="center"
             tools:text="Name" />
@@ -40,6 +43,7 @@
         <TextView
             android:id="@+id/character_card_gender"
             android:layout_width="match_parent"
+            android:gravity="center"
             tools:text="Male"
             android:layout_height="wrap_content"/>
 
@@ -48,8 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginTop="32dp"
-            android:gravity="end"
+            android:gravity="center"
             tools:text="alive" />
     </LinearLayout>
 

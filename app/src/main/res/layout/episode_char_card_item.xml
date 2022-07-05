@@ -9,7 +9,7 @@
     app:cardCornerRadius="@dimen/card_corner_radius">
 
     <TextView
-        android:id="@+id/episode_card_name"
+        android:id="@+id/character_card_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"

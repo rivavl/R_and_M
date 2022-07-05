@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    tools:context=".presentation.character.CharactersListFragment"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".presentation.character.list.CharactersListFragment">
 
     <EditText
         android:id="@+id/char_fragment_search"
@@ -30,10 +30,32 @@
         android:layout_height="0dp"
         android:padding="24dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/char_fragment_error_message"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/char_fragment_search"
         tools:listitem="@layout/character_card_item" />
+
+    <ProgressBar
+        android:id="@+id/char_list_progress_bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/char_fragment_error_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Error message"
+        android:gravity="center"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/char_fragment_recycler_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
