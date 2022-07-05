@@ -18,4 +18,9 @@ interface LocationAPI {
     suspend fun getLocationById(
         @Path("id") id: Int
     ): LocationDto
+
+    @GET("location/{id}")
+    suspend fun getLocationsByIds(
+        @Path("id") id: String
+    ): List<LocationDto>
 }

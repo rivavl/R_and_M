@@ -18,4 +18,9 @@ interface CharacterAPI {
     suspend fun getCharacterById(
         @Path("id") id: Int
     ): CharacterDto
+
+    @GET("character/{id}")
+    suspend fun getCharactersByIds(
+        @Path("id") id: String
+    ): List<CharacterDto>
 }

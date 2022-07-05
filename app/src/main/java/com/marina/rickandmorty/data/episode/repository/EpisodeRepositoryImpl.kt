@@ -4,7 +4,7 @@ import com.marina.rickandmorty.data.episode.entity.EpisodeDto
 import com.marina.rickandmorty.data.util.RetrofitInstance
 import com.marina.rickandmorty.domain.episode.repository.EpisodeRepository
 
-class EpisodeRepositoryImpl() : EpisodeRepository {
+class EpisodeRepositoryImpl : EpisodeRepository {
 
     override suspend fun getAllEpisodes(page: Int): List<EpisodeDto> {
         return RetrofitInstance.episodeApi.getEpisodes(page).episodeDtos
@@ -12,5 +12,9 @@ class EpisodeRepositoryImpl() : EpisodeRepository {
 
     override suspend fun getEpisode(id: Int): EpisodeDto {
         return RetrofitInstance.episodeApi.getEpisodeById(id)
+    }
+
+    override suspend fun getEpisodes(ids: String): List<EpisodeDto> {
+        return RetrofitInstance.episodeApi.getEpisodesByIds(ids)
     }
 }
