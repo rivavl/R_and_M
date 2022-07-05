@@ -1,7 +1,6 @@
-package com.marina.rickandmorty.presentation.location.recycler_view
+package com.marina.rickandmorty.presentation.location.list.recycler_view
 
 import androidx.recyclerview.widget.DiffUtil
-import com.marina.rickandmorty.presentation.episode.entity.Episode
 import com.marina.rickandmorty.presentation.location.entity.Location
 
 class LocationDiffCallback : DiffUtil.ItemCallback<Location>() {

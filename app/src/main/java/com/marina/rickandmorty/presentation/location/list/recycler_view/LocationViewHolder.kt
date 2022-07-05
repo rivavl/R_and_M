@@ -1,4 +1,4 @@
-package com.marina.rickandmorty.presentation.location.recycler_view
+package com.marina.rickandmorty.presentation.location.list.recycler_view
 
 import android.view.View
 import android.widget.TextView

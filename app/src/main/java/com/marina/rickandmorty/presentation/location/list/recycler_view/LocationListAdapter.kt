@@ -1,4 +1,4 @@
-package com.marina.rickandmorty.presentation.location.recycler_view
+package com.marina.rickandmorty.presentation.location.list.recycler_view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,10 +9,10 @@ import com.marina.rickandmorty.presentation.location.entity.Location
 class LocationListAdapter :
     ListAdapter<Location, LocationViewHolder>(LocationDiffCallback()) {
 
-    var onEpisodeClick: ((Location) -> Unit)? = null
+    var onLocationClick: ((Location) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationViewHolder {
-        val layout = R.layout.episode_card_item
+        val layout = R.layout.location_card_item
         val view = LayoutInflater.from(parent.context).inflate(layout, parent, false)
         return LocationViewHolder(view)
     }
@@ -21,7 +21,7 @@ class LocationListAdapter :
         val location = getItem(position)
 
         holder.view.setOnClickListener {
-            onEpisodeClick?.invoke(location)
+            onLocationClick?.invoke(location)
         }
 
         with(holder) {
