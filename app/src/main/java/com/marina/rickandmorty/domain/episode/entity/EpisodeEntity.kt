@@ -24,13 +24,14 @@ fun EpisodeDto.toEpisodeEntity(): EpisodeEntity {
         url = url
     )
 }
-//
-//fun EpisodeDto.toEpisode(): Episode {
-//    return Episode(
-//        id = id,
-//        air_date = air_date,
-//        characters = characters,
-//        episode = episode,
-//        name = name
-//    )
-//}
+
+fun EpisodeEntity.toEpisode(): Episode {
+    val chars = characters.map { ch -> ch.split("/") }
+    return Episode(
+        id = id,
+        air_date = air_date,
+        characters = chars.map { it[it.size - 1] },
+        episode = episode,
+        name = name
+    )
+}

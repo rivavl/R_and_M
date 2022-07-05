@@ -7,4 +7,6 @@ interface EpisodeRepository {
     suspend fun getAllEpisodes(page: Int): List<EpisodeDto>
 
     suspend fun getEpisode(id: Int): EpisodeDto
+
+    suspend fun getEpisodes(ids: String): List<EpisodeDto>
 }

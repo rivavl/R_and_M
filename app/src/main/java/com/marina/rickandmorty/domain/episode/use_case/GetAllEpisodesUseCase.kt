@@ -1,12 +1,10 @@
 package com.marina.rickandmorty.domain.episode.use_case
 
-import androidx.lifecycle.LiveData
-import com.marina.rickandmorty.Resource
-import com.marina.rickandmorty.domain.character.entity.CharacterEntity
-import com.marina.rickandmorty.domain.character.entity.toCharacterEntity
-import com.marina.rickandmorty.domain.episode.entity.EpisodeEntity
+import com.marina.rickandmorty.domain.util.Resource
+import com.marina.rickandmorty.domain.episode.entity.toEpisode
 import com.marina.rickandmorty.domain.episode.entity.toEpisodeEntity
 import com.marina.rickandmorty.domain.episode.repository.EpisodeRepository
+import com.marina.rickandmorty.presentation.episode.entity.Episode
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
@@ -16,11 +14,11 @@ class GetAllEpisodesUseCase(
     private val repository: EpisodeRepository
 ) {
 
-    operator fun invoke(page: Int): Flow<Resource<List<EpisodeEntity>>> = flow {
+    operator fun invoke(page: Int): Flow<Resource<List<Episode>>> = flow {
         try {
             emit(Resource.Loading())
-            val characters = repository.getAllEpisodes(page).map { it.toEpisodeEntity()}
-            emit(Resource.Success(characters))
+            val episodes = repository.getAllEpisodes(page).map { it.toEpisodeEntity() }
+            emit(Resource.Success(episodes.map { it.toEpisode() }))
         } catch (e: HttpException) {
             emit(Resource.Error(e.localizedMessage ?: "An unexpected error occurred"))
         } catch (e: IOException) {

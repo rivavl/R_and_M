@@ -7,4 +7,6 @@ interface LocationRepository {
     suspend fun getAllLocations(page: Int): List<LocationDto>
 
     suspend fun getLocation(id: Int): LocationDto
+
+    suspend fun getLocations(ids: String): List<LocationDto>
 }

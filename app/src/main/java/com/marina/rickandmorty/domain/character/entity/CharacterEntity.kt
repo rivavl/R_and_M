@@ -37,15 +37,20 @@ fun CharacterDto.toCharacterEntity(): CharacterEntity {
     )
 }
 
-fun CharacterDto.toCharacter(): Character {
+fun CharacterEntity.toCharacter(): Character {
+    val ep = episode.map { ep -> ep.split("/") }
     return Character(
         id = id,
-        episode = episode,
+        episode = ep.map { it[it.size - 1] },
         gender = gender,
         image = image,
         name = name,
         species = species,
         status = status,
-        type = type
+        type = type,
+        locationUrl = locationUrl,
+        locationName = locationName,
+        originUrl = originUrl,
+        originName = originName
     )
 }
