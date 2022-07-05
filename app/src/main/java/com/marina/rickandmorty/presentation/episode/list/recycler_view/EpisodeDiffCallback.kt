@@ -1,4 +1,4 @@
-package com.marina.rickandmorty.presentation.episode.recycler_view
+package com.marina.rickandmorty.presentation.episode.list.recycler_view
 
 import androidx.recyclerview.widget.DiffUtil
 import com.marina.rickandmorty.presentation.episode.entity.Episode

@@ -1,7 +1,6 @@
-package com.marina.rickandmorty.presentation.episode.recycler_view
+package com.marina.rickandmorty.presentation.episode.list.recycler_view
 
 import android.view.View
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.marina.rickandmorty.R

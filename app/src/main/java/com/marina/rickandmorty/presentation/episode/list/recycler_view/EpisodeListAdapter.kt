@@ -1,4 +1,4 @@
-package com.marina.rickandmorty.presentation.episode.recycler_view
+package com.marina.rickandmorty.presentation.episode.list.recycler_view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
