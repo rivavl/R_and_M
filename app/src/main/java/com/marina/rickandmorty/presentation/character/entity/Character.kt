@@ -1,16 +1,16 @@
 package com.marina.rickandmorty.presentation.character.entity
 
-import com.marina.rickandmorty.presentation.episode.entity.Episode
-
 data class Character(
     val id: Int,
-    val episode: List<Episode>,
+    val episode: List<String>,
     val gender: String,
     val image: String,
-    val location: CLocation,
+    val locationName: String,
+    val locationUrl: String,
     val name: String,
-    val origin: CLocation,
+    val originName: String,
+    val originUrl: String,
     val species: String,
     val status: String,
-    val type: String
+    val type: String = ""
 )

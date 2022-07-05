@@ -1,4 +1,4 @@
-package com.marina.rickandmorty.presentation.character.recycler_view
+package com.marina.rickandmorty.presentation.character.list.recycler_view
 
 import android.view.View
 import android.widget.ImageView

@@ -1,8 +1,11 @@
-package com.marina.rickandmorty.presentation.character.recycler_view
+package com.marina.rickandmorty.presentation.character.list.recycler_view
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.ListAdapter
+import com.bumptech.glide.Glide
 import com.marina.rickandmorty.R
 import com.marina.rickandmorty.presentation.character.entity.Character
 
@@ -25,11 +28,17 @@ class CharacterListAdapter :
         }
 
         with(holder) {
-            ivPhoto.setImageResource(R.drawable.ic_launcher_foreground)
             tvName.text = character.name
             tvStatus.text = character.status
             tvSpecies.text = character.species
             tvGender.text = character.gender
+            loadImage(character.image, ivPhoto, holder.view.context)
         }
+    }
+
+    private fun loadImage(url: String, imageView: ImageView, context: Context) {
+        Glide.with(context)
+            .load(url)
+            .into(imageView)
     }
 }

@@ -1,4 +1,4 @@
-package com.marina.rickandmorty.presentation.character.recycler_view
+package com.marina.rickandmorty.presentation.character.list.recycler_view
 
 import androidx.recyclerview.widget.DiffUtil
 import com.marina.rickandmorty.presentation.character.entity.Character
