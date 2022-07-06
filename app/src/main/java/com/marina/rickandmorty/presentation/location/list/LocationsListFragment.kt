@@ -14,6 +14,7 @@ import com.marina.rickandmorty.domain.location.use_case.GetAllLocationsUseCase
 import com.marina.rickandmorty.domain.util.Resource
 import com.marina.rickandmorty.presentation.episode.detail.EpisodeDetailFragment
 import com.marina.rickandmorty.presentation.location.LocationViewModelFactory
+import com.marina.rickandmorty.presentation.location.detail.LocationDetailFragment
 import com.marina.rickandmorty.presentation.location.list.recycler_view.LocationListAdapter
 import com.marina.rickandmorty.presentation.util.PaginationScrollListener
 
@@ -90,7 +91,7 @@ class LocationsListFragment : Fragment(R.layout.fragment_locations_list) {
         locationListAdapter.onLocationClick = {
             parentFragmentManager.beginTransaction()
                 .addToBackStack(null)
-                .replace(R.id.container, EpisodeDetailFragment.getInstance(it.id))
+                .replace(R.id.container, LocationDetailFragment.getInstance(it.id))
                 .commit()
         }
     }

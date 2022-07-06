@@ -8,10 +8,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.marina.rickandmorty.R
 import com.marina.rickandmorty.data.character.repository.CharacterRepositoryImpl
-import com.marina.rickandmorty.data.episode.repository.EpisodeRepositoryImpl
 import com.marina.rickandmorty.data.location.repository.LocationRepositoryImpl
+import com.marina.rickandmorty.domain.character.use_case.GetCharacterUseCase
 import com.marina.rickandmorty.domain.character.use_case.GetCharactersUseCase
-import com.marina.rickandmorty.domain.episode.use_case.GetEpisodeUseCase
 import com.marina.rickandmorty.domain.location.use_case.GetLocationUseCase
 import com.marina.rickandmorty.domain.util.Resource
 import com.marina.rickandmorty.presentation.episode.list.recycler_view.CharacterAdapter
@@ -39,11 +38,12 @@ class LocationDetailFragment : Fragment(R.layout.fragment_location_detail) {
         parseParams()
         val repo = CharacterRepositoryImpl()
         val repoLoc = LocationRepositoryImpl()
-        val useCaseChar = GetCharactersUseCase(repo)
+        val useCaseChar = GetCharacterUseCase(repo)
+        val useCaseChars = GetCharactersUseCase(repo)
         val useCaseLoc = GetLocationUseCase(repoLoc)
         viewModel = ViewModelProvider(
             this,
-            LocationDetailViewModelFactory(currentId, useCaseChar, useCaseLoc)
+            LocationDetailViewModelFactory(currentId, useCaseChars, useCaseChar, useCaseLoc)
         )[LocationDetailViewModel::class.java]
 
         viewModel.location.observe(viewLifecycleOwner) { response ->
@@ -86,10 +86,10 @@ class LocationDetailFragment : Fragment(R.layout.fragment_location_detail) {
     }
 
     private fun init() {
-        locationName = view?.findViewById(R.id.episode_detail_fragment_name)!!
-        locationType = view?.findViewById(R.id.episode_detail_fragment_air_date)!!
-        locationDimension = view?.findViewById(R.id.episode_detail_fragment_episode)!!
-        charactersRecyclerView = view?.findViewById(R.id.episode_detail_fragment_characters_rv)!!
+        locationName = view?.findViewById(R.id.location_detail_fragment_name)!!
+        locationType = view?.findViewById(R.id.location_detail_fragment_type)!!
+        locationDimension = view?.findViewById(R.id.location_detail_fragment_dimension)!!
+        charactersRecyclerView = view?.findViewById(R.id.location_detail_fragment_residents_rv)!!
         setupRecyclerView()
     }
 

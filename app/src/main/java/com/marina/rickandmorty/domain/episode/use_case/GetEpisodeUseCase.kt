@@ -14,11 +14,11 @@ class GetEpisodeUseCase(
     private val repository: EpisodeRepository
 ) {
 
-    operator fun invoke(id: Int): Flow<Resource<Episode>> = flow {
+    operator fun invoke(id: Int): Flow<Resource<List<Episode>>> = flow {
         try {
             emit(Resource.Loading())
-            val episodes = repository.getEpisode(id).toEpisodeEntity()
-            emit(Resource.Success(episodes.toEpisode()))
+            val episodes = repository.getEpisode(id).map { it.toEpisodeEntity() }
+            emit(Resource.Success(episodes.map { it.toEpisode() }))
         } catch (e: HttpException) {
             emit(Resource.Error(e.localizedMessage ?: "An unexpected error occurred"))
         } catch (e: IOException) {

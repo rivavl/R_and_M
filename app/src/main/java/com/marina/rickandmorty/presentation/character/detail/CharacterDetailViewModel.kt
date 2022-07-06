@@ -38,7 +38,7 @@ class CharacterDetailViewModel(
         getCharacterUseCase(id).collect { result ->
             when (result) {
                 is Resource.Success -> {
-                    _character.value = result.data?.let { Resource.Success(it) }
+                    _character.value = result.data?.let { Resource.Success(it[0]) }
                 }
 
                 is Resource.Loading -> {
@@ -57,14 +57,28 @@ class CharacterDetailViewModel(
         val formatId = epIds.toString()
             .replace("[", "")
             .replace("]", "")
-//        if (epIds?.size!! > 1) {
-        val res = getEpisodesUseCase(formatId)
-        processResponse(res)
-//        }
-//        else {
-//            val res = getEpisodeUseCase(formatId.toInt())
-//            processResponse()
-//        }
+        val response = if (epIds?.size!! > 1) {
+            getEpisodesUseCase(formatId)
+        } else {
+            getEpisodeUseCase(formatId.toInt())
+        }
+
+        response.collect { result ->
+            when (result) {
+                is Resource.Success -> {
+                    _episodesList.value =
+                        result.data?.let { Resource.Success(it as MutableList<Episode>) }!!
+                }
+
+                is Resource.Loading -> {
+                    _episodesList.value = Resource.Loading()
+                }
+
+                is Resource.Error -> {
+                    _episodesList.value = Resource.Error(result.message.toString())
+                }
+            }
+        }
 
 
     }

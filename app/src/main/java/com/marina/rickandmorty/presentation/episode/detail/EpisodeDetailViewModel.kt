@@ -37,7 +37,7 @@ class EpisodeDetailViewModel(
         getEpisodeUseCase(id).collect { result ->
             when (result) {
                 is Resource.Success -> {
-                    _episode.value = result.data?.let { Resource.Success(it) }
+                    _episode.value = result.data?.let { Resource.Success(it[0]) }
                 }
 
                 is Resource.Loading -> {

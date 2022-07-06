@@ -6,7 +6,7 @@ interface CharacterRepository {
 
     suspend fun getAllCharacters(pageNumber: Int): List<CharacterDto>
 
-    suspend fun getCharacter(id: Int): CharacterDto
+    suspend fun getCharacter(id: Int): List<CharacterDto>
 
     suspend fun getCharacters(ids: String): List<CharacterDto>
 }

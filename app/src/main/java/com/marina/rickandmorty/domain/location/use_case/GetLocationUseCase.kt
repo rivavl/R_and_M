@@ -13,11 +13,11 @@ import java.io.IOException
 class GetLocationUseCase(
     private val repository: LocationRepository
 ) {
-    operator fun invoke(id: Int): Flow<Resource<Location>> = flow {
+    operator fun invoke(id: Int): Flow<Resource<List<Location>>> = flow {
         try {
             emit(Resource.Loading())
-            val location = repository.getLocation(id).toLocationEntity()
-            emit(Resource.Success(location.toLocation()))
+            val location = repository.getLocation(id).map { it.toLocationEntity() }
+            emit(Resource.Success(location.map { it.toLocation() }))
         } catch (e: HttpException) {
             emit(Resource.Error(e.localizedMessage ?: "An unexpected error occurred"))
         } catch (e: IOException) {

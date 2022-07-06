@@ -4,17 +4,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.marina.rickandmorty.domain.character.use_case.GetCharacterUseCase
 import com.marina.rickandmorty.domain.character.use_case.GetCharactersUseCase
 import com.marina.rickandmorty.domain.location.use_case.GetLocationUseCase
 import com.marina.rickandmorty.domain.util.Resource
 import com.marina.rickandmorty.presentation.character.entity.Character
-import com.marina.rickandmorty.presentation.episode.entity.Episode
 import com.marina.rickandmorty.presentation.location.entity.Location
 import kotlinx.coroutines.launch
 
 class LocationDetailViewModel(
     private val id: Int,
     private val getCharactersUseCase: GetCharactersUseCase,
+    private val getCharacterUseCase: GetCharacterUseCase,
     private val getLocationUseCase: GetLocationUseCase
 ) : ViewModel() {
 
@@ -36,7 +37,7 @@ class LocationDetailViewModel(
         getLocationUseCase(id).collect { result ->
             when (result) {
                 is Resource.Success -> {
-                    _location.value = result.data?.let { Resource.Success(it) }
+                    _location.value = result.data?.let { Resource.Success(it[0]) }
                 }
 
                 is Resource.Loading -> {
@@ -55,7 +56,13 @@ class LocationDetailViewModel(
         val formatId = chIds.toString()
             .replace("[", "")
             .replace("]", "")
-        val response = getCharactersUseCase(formatId)
+        getCharactersUseCase(formatId)
+        val response = if (chIds?.size!! > 1) {
+            getCharactersUseCase(formatId)
+        } else {
+            getCharacterUseCase(formatId.toInt())
+        }
+
 
         response.collect { result ->
             when (result) {
