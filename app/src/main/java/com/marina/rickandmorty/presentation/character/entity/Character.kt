@@ -6,10 +6,10 @@ data class Character(
     val gender: String,
     val image: String,
     val locationName: String,
-    val locationUrl: String,
+    val locationId: Int,
     val name: String,
     val originName: String,
-    val originUrl: String,
+    val originId: Int,
     val species: String,
     val status: String,
     val type: String = ""

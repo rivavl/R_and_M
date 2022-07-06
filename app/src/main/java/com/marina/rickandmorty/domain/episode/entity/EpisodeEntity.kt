@@ -9,8 +9,7 @@ data class EpisodeEntity(
     val created: String,
     val episode: String,
     val id: Int,
-    val name: String,
-    val url: String
+    val name: String
 )
 
 fun EpisodeDto.toEpisodeEntity(): EpisodeEntity {
@@ -20,8 +19,7 @@ fun EpisodeDto.toEpisodeEntity(): EpisodeEntity {
         air_date = air_date,
         characters = characters,
         episode = episode,
-        name = name,
-        url = url
+        name = name
     )
 }
 
