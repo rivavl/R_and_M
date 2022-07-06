@@ -10,8 +10,8 @@ class LocationRepositoryImpl : LocationRepository {
         return RetrofitInstance.locationApi.getLocations(page).locationDtos
     }
 
-    override suspend fun getLocation(id: Int): LocationDto {
-        return RetrofitInstance.locationApi.getLocationById(id)
+    override suspend fun getLocation(id: Int): List<LocationDto> {
+        return listOf(RetrofitInstance.locationApi.getLocationById(id))
     }
 
     override suspend fun getLocations(ids: String): List<LocationDto> {

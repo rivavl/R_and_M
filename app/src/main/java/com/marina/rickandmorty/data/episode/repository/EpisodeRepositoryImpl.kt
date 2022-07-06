@@ -10,8 +10,8 @@ class EpisodeRepositoryImpl : EpisodeRepository {
         return RetrofitInstance.episodeApi.getEpisodes(page).episodeDtos
     }
 
-    override suspend fun getEpisode(id: Int): EpisodeDto {
-        return RetrofitInstance.episodeApi.getEpisodeById(id)
+    override suspend fun getEpisode(id: Int): List<EpisodeDto> {
+        return listOf(RetrofitInstance.episodeApi.getEpisodeById(id))
     }
 
     override suspend fun getEpisodes(ids: String): List<EpisodeDto> {

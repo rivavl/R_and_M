@@ -10,8 +10,8 @@ class CharacterRepositoryImpl : CharacterRepository {
         return RetrofitInstance.characterApi.getCharacters(pageNumber).characterDtos
     }
 
-    override suspend fun getCharacter(id: Int): CharacterDto {
-        return RetrofitInstance.characterApi.getCharacterById(id)
+    override suspend fun getCharacter(id: Int): List<CharacterDto> {
+        return listOf(RetrofitInstance.characterApi.getCharacterById(id))
     }
 
     override suspend fun getCharacters(ids: String): List<CharacterDto> {
