@@ -5,16 +5,17 @@ import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.marina.rickandmorty.R
 import com.marina.rickandmorty.data.character.repository.CharacterRepositoryImpl
 import com.marina.rickandmorty.data.episode.repository.EpisodeRepositoryImpl
 import com.marina.rickandmorty.domain.character.use_case.GetCharactersUseCase
 import com.marina.rickandmorty.domain.episode.use_case.GetEpisodeUseCase
-import com.marina.rickandmorty.domain.episode.use_case.GetEpisodesUseCase
 import com.marina.rickandmorty.domain.util.Resource
+import com.marina.rickandmorty.presentation.character.detail.CharacterDetailFragment
+import com.marina.rickandmorty.presentation.character.list.recycler_view.CharacterListAdapter
 import com.marina.rickandmorty.presentation.episode.entity.Episode
-import com.marina.rickandmorty.presentation.episode.list.recycler_view.CharacterAdapter
 
 
 class EpisodeDetailFragment : Fragment(R.layout.fragment_episode_detail) {
@@ -26,7 +27,7 @@ class EpisodeDetailFragment : Fragment(R.layout.fragment_episode_detail) {
     private lateinit var episodeCode: TextView
 
     private lateinit var charactersRecyclerView: RecyclerView
-    private lateinit var charactersAdapter: CharacterAdapter
+    private lateinit var charactersAdapter: CharacterListAdapter
 
     private lateinit var viewModel: EpisodeDetailViewModel
 
@@ -101,9 +102,20 @@ class EpisodeDetailFragment : Fragment(R.layout.fragment_episode_detail) {
     }
 
     private fun setupRecyclerView() {
-        charactersAdapter = CharacterAdapter()
+        charactersAdapter = CharacterListAdapter()
         charactersRecyclerView.apply {
             adapter = charactersAdapter
+            layoutManager = GridLayoutManager(requireActivity(), 2)
+        }
+        setupClickListener()
+    }
+
+    private fun setupClickListener() {
+        charactersAdapter.onCharacterClick = {
+            parentFragmentManager.beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.container, CharacterDetailFragment.getInstance(it.id))
+                .commit()
         }
     }
 

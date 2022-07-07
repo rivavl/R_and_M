@@ -18,6 +18,7 @@ import com.marina.rickandmorty.domain.episode.use_case.GetEpisodeUseCase
 import com.marina.rickandmorty.domain.episode.use_case.GetEpisodesUseCase
 import com.marina.rickandmorty.domain.util.Resource
 import com.marina.rickandmorty.presentation.character.entity.Character
+import com.marina.rickandmorty.presentation.episode.detail.EpisodeDetailFragment
 import com.marina.rickandmorty.presentation.episode.list.recycler_view.EpisodeListAdapter
 
 
@@ -131,6 +132,16 @@ class CharacterDetailFragment : Fragment(R.layout.fragment_character_detail) {
         episodesRecyclerView.apply {
             adapter = episodeAdapter
             layoutManager = GridLayoutManager(requireActivity(), 2)
+        }
+        setupClickListener()
+    }
+
+    private fun setupClickListener() {
+        episodeAdapter.onEpisodeClick = {
+            parentFragmentManager.beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.container, EpisodeDetailFragment.getInstance(it.id))
+                .commit()
         }
     }
 

@@ -69,20 +69,26 @@
         android:layout_height="wrap_content"
         android:text="@string/episode_detail_characters"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@id/episode_detail_fragment_characters_rv"
+        app:layout_constraintBottom_toTopOf="@id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/episode" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/episode_detail_fragment_characters_rv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/characters"
-        tools:listitem="@layout/episode_char_card_item" />
+        app:layout_constraintTop_toBottomOf="@id/guideline3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

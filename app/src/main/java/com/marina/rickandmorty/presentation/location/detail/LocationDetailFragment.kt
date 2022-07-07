@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.marina.rickandmorty.R
 import com.marina.rickandmorty.data.character.repository.CharacterRepositoryImpl
@@ -13,7 +14,8 @@ import com.marina.rickandmorty.domain.character.use_case.GetCharacterUseCase
 import com.marina.rickandmorty.domain.character.use_case.GetCharactersUseCase
 import com.marina.rickandmorty.domain.location.use_case.GetLocationUseCase
 import com.marina.rickandmorty.domain.util.Resource
-import com.marina.rickandmorty.presentation.episode.list.recycler_view.CharacterAdapter
+import com.marina.rickandmorty.presentation.character.detail.CharacterDetailFragment
+import com.marina.rickandmorty.presentation.character.list.recycler_view.CharacterListAdapter
 import com.marina.rickandmorty.presentation.location.entity.Location
 
 
@@ -26,7 +28,7 @@ class LocationDetailFragment : Fragment(R.layout.fragment_location_detail) {
     private lateinit var locationDimension: TextView
 
     private lateinit var charactersRecyclerView: RecyclerView
-    private lateinit var charactersAdapter: CharacterAdapter
+    private lateinit var charactersAdapter: CharacterListAdapter
 
     private lateinit var viewModel: LocationDetailViewModel
 
@@ -102,9 +104,20 @@ class LocationDetailFragment : Fragment(R.layout.fragment_location_detail) {
     }
 
     private fun setupRecyclerView() {
-        charactersAdapter = CharacterAdapter()
+        charactersAdapter = CharacterListAdapter()
         charactersRecyclerView.apply {
             adapter = charactersAdapter
+            layoutManager = GridLayoutManager(requireActivity(), 2)
+        }
+        setupClickListener()
+    }
+
+    private fun setupClickListener() {
+        charactersAdapter.onCharacterClick = {
+            parentFragmentManager.beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.container, CharacterDetailFragment.getInstance(it.id))
+                .commit()
         }
     }
 
