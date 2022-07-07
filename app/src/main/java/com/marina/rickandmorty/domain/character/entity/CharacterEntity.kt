@@ -40,10 +40,20 @@ fun CharacterDto.toCharacterEntity(): CharacterEntity {
 fun CharacterEntity.toCharacter(): Character {
     val episodesIds = episode.map { ep -> ep.split("/") }
     val locationUrlSplit = locationUrl.split("/")
-    val locationId = locationUrlSplit[locationUrlSplit.size - 1].toInt()
-    val originUrlSplit = locationUrl.split("/")
-    val originId = originUrlSplit[originUrlSplit.size - 1].toInt()
 
+    val locationId = if (locationUrlSplit.size > 1) {
+        locationUrlSplit[locationUrlSplit.size - 1].toInt()
+    } else {
+        -1
+    }
+
+    val originUrlSplit = locationUrl.split("/")
+
+    val originId = if (originUrlSplit.size > 1) {
+        originUrlSplit[originUrlSplit.size - 1].toInt()
+    } else {
+        -1
+    }
     return Character(
         id = id,
         episode = episodesIds.map { it[it.size - 1] },
