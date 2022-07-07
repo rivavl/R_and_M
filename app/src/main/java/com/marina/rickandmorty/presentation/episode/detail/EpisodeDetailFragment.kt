@@ -36,7 +36,7 @@ class EpisodeDetailFragment : Fragment(R.layout.fragment_episode_detail) {
         init()
         setupRecyclerView()
         parseParams()
-        val repo = CharacterRepositoryImpl()
+        val repo = CharacterRepositoryImpl(requireActivity().applicationContext)
         val repoEp = EpisodeRepositoryImpl()
         val useCaseChar = GetCharactersUseCase(repo)
         val useCaseEp = GetEpisodeUseCase(repoEp)

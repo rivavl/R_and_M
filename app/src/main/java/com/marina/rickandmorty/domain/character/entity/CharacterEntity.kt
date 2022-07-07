@@ -1,6 +1,7 @@
 package com.marina.rickandmorty.domain.character.entity
 
-import com.marina.rickandmorty.data.character.entity.CharacterDto
+import com.marina.rickandmorty.data.character.local.entity.CharacterDB
+import com.marina.rickandmorty.data.character.remote.entity.CharacterDto
 import com.marina.rickandmorty.presentation.character.entity.Character
 
 data class CharacterEntity(
@@ -37,13 +38,41 @@ fun CharacterDto.toCharacterEntity(): CharacterEntity {
     )
 }
 
+fun CharacterDB.toCharacterEntity(): CharacterEntity {
+    return CharacterEntity(
+        id = id,
+        created = created,
+        episode = episode,
+        gender = gender,
+        image = image,
+        locationName = locationName,
+        locationUrl = locationUrl,
+        name = name,
+        originName = originName,
+        originUrl = originUrl,
+        species = species,
+        status = status,
+        type = type
+    )
+}
+
 fun CharacterEntity.toCharacter(): Character {
     val episodesIds = episode.map { ep -> ep.split("/") }
     val locationUrlSplit = locationUrl.split("/")
-    val locationId = locationUrlSplit[locationUrlSplit.size - 1].toInt()
-    val originUrlSplit = locationUrl.split("/")
-    val originId = originUrlSplit[originUrlSplit.size - 1].toInt()
 
+    val locationId = if (locationUrlSplit.size > 1) {
+        locationUrlSplit[locationUrlSplit.size - 1].toInt()
+    } else {
+        -1
+    }
+
+    val originUrlSplit = locationUrl.split("/")
+
+    val originId = if (originUrlSplit.size > 1) {
+        originUrlSplit[originUrlSplit.size - 1].toInt()
+    } else {
+        -1
+    }
     return Character(
         id = id,
         episode = episodesIds.map { it[it.size - 1] },

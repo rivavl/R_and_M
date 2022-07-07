@@ -1,4 +1,4 @@
-package com.marina.rickandmorty.data.location.entity
+package com.marina.rickandmorty.data.location.remote.entity
 
 data class LocationDto(
     val created: String,

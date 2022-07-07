@@ -1,6 +1,6 @@
 package com.marina.rickandmorty.domain.episode.repository
 
-import com.marina.rickandmorty.data.episode.entity.EpisodeDto
+import com.marina.rickandmorty.data.episode.remote.entity.EpisodeDto
 
 interface EpisodeRepository {
 

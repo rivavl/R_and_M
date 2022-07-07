@@ -1,10 +1,11 @@
 package com.marina.rickandmorty.presentation.util
 
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 abstract class PaginationScrollListener(
-    private val layoutManager: GridLayoutManager
+    private val layoutManager: LinearLayoutManager
 ) : RecyclerView.OnScrollListener() {
 
     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -15,7 +16,7 @@ abstract class PaginationScrollListener(
         val firstVisibleItemPosition: Int = layoutManager.findFirstVisibleItemPosition()
 
         if (!isLoading() && !isLastPage()) {
-            if ((visibleItemCount + firstVisibleItemPosition)  >= totalItemCount
+            if (visibleItemCount + firstVisibleItemPosition  >= totalItemCount
                 && firstVisibleItemPosition >= 0
             ) {
                 loadMoreItems()

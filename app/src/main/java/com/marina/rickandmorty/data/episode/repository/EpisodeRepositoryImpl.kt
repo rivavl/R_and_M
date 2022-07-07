@@ -1,7 +1,7 @@
 package com.marina.rickandmorty.data.episode.repository
 
-import com.marina.rickandmorty.data.episode.entity.EpisodeDto
-import com.marina.rickandmorty.data.util.RetrofitInstance
+import com.marina.rickandmorty.data.episode.remote.entity.EpisodeDto
+import com.marina.rickandmorty.data.util.network.RetrofitInstance
 import com.marina.rickandmorty.domain.episode.repository.EpisodeRepository
 
 class EpisodeRepositoryImpl : EpisodeRepository {

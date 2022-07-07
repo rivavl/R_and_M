@@ -1,4 +1,4 @@
-package com.marina.rickandmorty.data.location.entity
+package com.marina.rickandmorty.data.episode.remote.entity
 
 data class Info(
     val count: Int,

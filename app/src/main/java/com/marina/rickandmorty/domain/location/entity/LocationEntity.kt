@@ -1,6 +1,6 @@
 package com.marina.rickandmorty.domain.location.entity
 
-import com.marina.rickandmorty.data.location.entity.LocationDto
+import com.marina.rickandmorty.data.location.remote.entity.LocationDto
 import com.marina.rickandmorty.presentation.location.entity.Location
 
 data class LocationEntity(

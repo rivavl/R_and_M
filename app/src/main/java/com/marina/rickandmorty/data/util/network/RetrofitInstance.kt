@@ -1,4 +1,4 @@
-package com.marina.rickandmorty.data.util
+package com.marina.rickandmorty.data.util.network
 
 import com.marina.rickandmorty.data.character.remote.CharacterAPI
 import com.marina.rickandmorty.data.episode.remote.EpisodeAPI

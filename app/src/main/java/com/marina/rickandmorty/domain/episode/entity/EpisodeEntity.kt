@@ -1,6 +1,6 @@
 package com.marina.rickandmorty.domain.episode.entity
 
-import com.marina.rickandmorty.data.episode.entity.EpisodeDto
+import com.marina.rickandmorty.data.episode.remote.entity.EpisodeDto
 import com.marina.rickandmorty.presentation.episode.entity.Episode
 
 data class EpisodeEntity(

@@ -1,8 +1,8 @@
-package com.marina.rickandmorty.data.character.entity
+package com.marina.rickandmorty.data.location.remote.entity
 
 data class Info(
     val count: Int,
     val next: String,
     val pages: Int,
-    val prev: String
+    val prev: Any
 )

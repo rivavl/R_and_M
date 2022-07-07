@@ -1,4 +1,4 @@
-package com.marina.rickandmorty.data.episode.entity
+package com.marina.rickandmorty.data.episode.remote.entity
 
 data class EpisodeDto(
     val air_date: String,

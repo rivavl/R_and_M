@@ -1,7 +1,7 @@
 package com.marina.rickandmorty.data.character.remote
 
-import com.marina.rickandmorty.data.character.entity.CharacterDto
-import com.marina.rickandmorty.data.character.entity.CharacterResponse
+import com.marina.rickandmorty.data.character.remote.entity.CharacterDto
+import com.marina.rickandmorty.data.character.remote.entity.CharacterResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

@@ -1,6 +1,6 @@
 package com.marina.rickandmorty.domain.location.repository
 
-import com.marina.rickandmorty.data.location.entity.LocationDto
+import com.marina.rickandmorty.data.location.remote.entity.LocationDto
 
 interface LocationRepository {
 

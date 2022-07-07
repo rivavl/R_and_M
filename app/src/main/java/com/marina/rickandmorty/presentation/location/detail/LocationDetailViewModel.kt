@@ -52,19 +52,22 @@ class LocationDetailViewModel(
     }
 
     suspend fun getCharacters() {
+
         val chIds = _location.value?.data?.residents
         val formatId = chIds.toString()
             .replace("[", "")
             .replace("]", "")
+
         getCharactersUseCase(formatId)
         val response = if (chIds?.size!! > 1) {
             getCharactersUseCase(formatId)
+        } else if(chIds.isEmpty()) {
+            null
         } else {
             getCharacterUseCase(formatId.toInt())
         }
 
-
-        response.collect { result ->
+        response?.collect { result ->
             when (result) {
                 is Resource.Success -> {
                     _charactersList.value =

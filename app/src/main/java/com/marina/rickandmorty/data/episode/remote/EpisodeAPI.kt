@@ -1,7 +1,7 @@
 package com.marina.rickandmorty.data.episode.remote
 
-import com.marina.rickandmorty.data.episode.entity.EpisodeDto
-import com.marina.rickandmorty.data.episode.entity.EpisodeResponse
+import com.marina.rickandmorty.data.episode.remote.entity.EpisodeDto
+import com.marina.rickandmorty.data.episode.remote.entity.EpisodeResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

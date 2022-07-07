@@ -1,4 +1,4 @@
-package com.marina.rickandmorty.data.location.entity
+package com.marina.rickandmorty.data.location.remote.entity
 
 import com.google.gson.annotations.SerializedName
 

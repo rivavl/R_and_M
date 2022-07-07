@@ -1,7 +1,7 @@
 package com.marina.rickandmorty.data.location.repository
 
-import com.marina.rickandmorty.data.location.entity.LocationDto
-import com.marina.rickandmorty.data.util.RetrofitInstance
+import com.marina.rickandmorty.data.location.remote.entity.LocationDto
+import com.marina.rickandmorty.data.util.network.RetrofitInstance
 import com.marina.rickandmorty.domain.location.repository.LocationRepository
 
 class LocationRepositoryImpl : LocationRepository {

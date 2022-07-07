@@ -1,9 +1,12 @@
 package com.marina.rickandmorty.presentation.character.detail
 
+import android.app.Application
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.marina.rickandmorty.data.util.database.DatabaseRM
 import com.marina.rickandmorty.domain.character.use_case.GetCharacterUseCase
 import com.marina.rickandmorty.domain.episode.use_case.GetEpisodeUseCase
 import com.marina.rickandmorty.domain.episode.use_case.GetEpisodesUseCase

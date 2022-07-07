@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.marina.rickandmorty.R
+import com.marina.rickandmorty.data.character.remote.CharacterAPI
 import com.marina.rickandmorty.domain.util.Resource
 import com.marina.rickandmorty.data.character.repository.CharacterRepositoryImpl
 import com.marina.rickandmorty.domain.character.use_case.GetAllCharactersUseCase
@@ -34,11 +35,11 @@ class CharactersListFragment : Fragment(R.layout.fragment_characters_list) {
         super.onViewCreated(view, savedInstanceState)
         init()
         setupRecyclerView()
-        val repo = CharacterRepositoryImpl()
+        val repo = CharacterRepositoryImpl(requireActivity().applicationContext)
         val useCase = GetAllCharactersUseCase(repo)
         viewModel = ViewModelProvider(
             this,
-            CharacterViewModelFactory(useCase)
+            CharacterViewModelFactory(useCase, requireActivity().applicationContext)
         )[CharacterViewModel::class.java]
 
         viewModel.charactersList.observe(viewLifecycleOwner) { response ->

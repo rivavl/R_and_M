@@ -36,7 +36,7 @@ class LocationDetailFragment : Fragment(R.layout.fragment_location_detail) {
         init()
         setupRecyclerView()
         parseParams()
-        val repo = CharacterRepositoryImpl()
+        val repo = CharacterRepositoryImpl(requireActivity().applicationContext)
         val repoLoc = LocationRepositoryImpl()
         val useCaseChar = GetCharacterUseCase(repo)
         val useCaseChars = GetCharactersUseCase(repo)
