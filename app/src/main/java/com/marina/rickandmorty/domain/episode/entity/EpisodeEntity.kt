@@ -28,7 +28,7 @@ fun EpisodeEntity.toEpisode(): Episode {
     return Episode(
         id = id,
         air_date = air_date,
-        characters = chars.map { it[it.size - 1] },
+        characters = chars.map { it.getOrNull(it.size - 1) },
         episode = episode,
         name = name
     )

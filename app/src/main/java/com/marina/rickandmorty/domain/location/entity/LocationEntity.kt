@@ -27,7 +27,7 @@ fun LocationEntity.toLocation(): Location {
         dimension = dimension,
         id = id,
         name = name,
-        residents = chars.map { it[it.size - 1] },
+        residents = chars.map { it.getOrNull(it.size - 1) },
         type = type
     )
 }

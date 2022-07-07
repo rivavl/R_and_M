@@ -7,17 +7,18 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.marina.rickandmorty.R
-import com.marina.rickandmorty.domain.util.Resource
 import com.marina.rickandmorty.data.character.repository.CharacterRepositoryImpl
 import com.marina.rickandmorty.data.episode.repository.EpisodeRepositoryImpl
 import com.marina.rickandmorty.domain.character.use_case.GetCharacterUseCase
 import com.marina.rickandmorty.domain.episode.use_case.GetEpisodeUseCase
 import com.marina.rickandmorty.domain.episode.use_case.GetEpisodesUseCase
-import com.marina.rickandmorty.presentation.character.detail.recycler_view.EpisodeAdapter
+import com.marina.rickandmorty.domain.util.Resource
 import com.marina.rickandmorty.presentation.character.entity.Character
+import com.marina.rickandmorty.presentation.episode.list.recycler_view.EpisodeListAdapter
 
 
 class CharacterDetailFragment : Fragment(R.layout.fragment_character_detail) {
@@ -33,7 +34,7 @@ class CharacterDetailFragment : Fragment(R.layout.fragment_character_detail) {
     private lateinit var characterImage: ImageView
 
     private lateinit var episodesRecyclerView: RecyclerView
-    private lateinit var episodeAdapter: EpisodeAdapter
+    private lateinit var episodeAdapter: EpisodeListAdapter
 
     private lateinit var viewModel: CharacterDetailViewModel
 
@@ -126,9 +127,10 @@ class CharacterDetailFragment : Fragment(R.layout.fragment_character_detail) {
     }
 
     private fun setupRecyclerView() {
-        episodeAdapter = EpisodeAdapter()
+        episodeAdapter = EpisodeListAdapter()
         episodesRecyclerView.apply {
             adapter = episodeAdapter
+            layoutManager = GridLayoutManager(requireActivity(), 2)
         }
     }
 
